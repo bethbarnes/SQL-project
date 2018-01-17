@@ -1,0 +1,7 @@
+CREATE TABLE database_name.movies(
+   id INTEGER primary key,
+   name TEXT default value NULL,
+   year  INTEGER,
+   .....
+   columnN datatype
+);
