@@ -88,3 +88,39 @@ WHERE roles.actor_id = '22591' AND genre = "Drama" AND roles2.actor_id != '22591
 ORDER BY movies.name
 DESC;
 
+
+SELECT first_name, last_name, actors.id
+FROM movies
+JOIN movies AS newMovies
+JOIN roles
+ON roles.movie_id = movies.id
+JOIN roles as newRoles
+ON roles.movie_id = newMovies.id
+JOIN actors
+ON roles.actor_id = actors.id
+WHERE movies.year < '1900' AND newMovies.year > '2000'
+AND roles.actor_id = newRoles.actor_id;
+
+
+
+SELECT first_name, last_name, actors.id
+FROM movies
+JOIN roles
+ON roles.movie_id = movies.id
+JOIN actors
+ON roles.actor_id = actors.id
+
+WHERE movies.year < '1900'
+
+INTERSECT
+
+SELECT first_name, last_name, actors.id
+FROM movies
+JOIN roles
+ON roles.movie_id = movies.id
+JOIN actors
+ON roles.actor_id = actors.id
+
+WHERE movies.year > '2000';
+
+
